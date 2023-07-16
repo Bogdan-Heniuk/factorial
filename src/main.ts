@@ -1,15 +1,17 @@
 import { NestFactory } from '@nestjs/core';
 import { FibonacciModule } from './factorial.module';
 import { MicroserviceOptions, Transport } from '@nestjs/microservices';
+import { ConfigService } from '@nestjs/config';
 
 async function bootstrap() {
   const app = await NestFactory.create(FibonacciModule);
+  const configService = app.get(ConfigService);
 
   await app.connectMicroservice<MicroserviceOptions>({
     transport: Transport.RMQ,
     options: {
-      urls: ['amqp://rabbitmq'],
-      queue: 'factorial_queue',
+      urls: [configService.get<string>('RMQ_URL')],
+      queue: configService.get<string>('RMQ_FACTORIAL_QUEUE'),
       queueOptions: {
         durable: false
       },
