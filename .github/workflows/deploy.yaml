@@ -51,6 +51,6 @@ jobs:
 
       - name: Apply
         run: |-
-          kubectl apply -f deployment
-          kubectl set image deployment/factorial-deployment factorial=makarovvv/factorial:${{ env.SHA }}
+          kubectl apply -f k8s
+          kubectl set image deployments/factorial-deployment factorial=makarovvv/factorial:${{ env.SHA }}
 
