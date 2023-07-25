@@ -1,10 +1,10 @@
 import { NestFactory } from '@nestjs/core';
-import { FibonacciModule } from './factorial.module';
+import { FactorialModule } from './factorial.module';
 import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 import { ConfigService } from '@nestjs/config';
 
 async function bootstrap() {
-  const app = await NestFactory.create(FibonacciModule);
+  const app = await NestFactory.create(FactorialModule);
   const configService = app.get(ConfigService);
 
   await app.connectMicroservice<MicroserviceOptions>({

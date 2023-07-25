@@ -13,4 +13,4 @@ import { ConfigModule } from '@nestjs/config';
   controllers: [FactorialController],
   providers: [FactorialService],
 })
-export class FibonacciModule {}
+export class FactorialModule {}
