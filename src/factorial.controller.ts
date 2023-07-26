@@ -10,8 +10,8 @@ export class FactorialController {
   constructor(private readonly fibonacciService: FactorialService) {}
 
   @MessagePattern({ cmd: 'calc_factorial' })
-  async getHello(@Payload() index: string): Promise<any> {
+  async getHello(@Payload() index: string): Promise<number> {
     const result = await this.fibonacciService.calcFactorial(Number(index));
-    return result + ' updated!';
+    return result;
   }
 }
