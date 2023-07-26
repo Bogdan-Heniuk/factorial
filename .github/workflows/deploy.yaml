@@ -37,11 +37,11 @@ jobs:
         uses: google-github-actions/get-gke-credentials@v0
         with:
           cluster_name: k8s
-          location: europe-central2
+          location: us-central1-a
 
       - name: Build
         run: |-
-          docker build -t makarovvv/factorial:latest -t makarovvv/factorial:${{ env.SHA }} -f ./Dockerfile .
+          docker build -t makarovvv/factorial:latest -t makarovvv/gateway:${{ env.SHA }} -f ./Dockerfile .
 
       - name: Push
         run: |-
